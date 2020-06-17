@@ -1,0 +1,12 @@
+Mi pagina web: xtudioplay.000webhostapp.com
+
+
+Conexion FTP
+
+servidor: files.000webhost.com
+nombre usuario: xtudioplay
+contraseña: aprendiendo_php
+
+
+Información de Base de datos
+
