@@ -9,13 +9,10 @@ $nombrePagina = "Actor";
 $nombreActor = $_POST['nombreActor'] ?? "";
 $apellidoActor = $_POST['apellidoActor'] ?? "";
 
-//imprimirArray($_POST);
-
 try {
 
-
-    // Asegurarnos de que el usuario haya hecho click en el boton Guardar Actor
-    if ( isset($_POST['guardar_actor']) ) {
+    // Asegurarnos de que el usuario haya hecho click en el botón Guardar
+    if ( isset($_POST['guardarActor']) ) {
 
         // Validar datos
         if ( empty($nombreActor) ) {
@@ -38,7 +35,7 @@ try {
             throw new Exception("Ocurrió un error al insertar los datos del actor");
         }
 
-        // Redireccionar la pagina
+        // Re-direccionar la página
         redireccionar("actor.php");
 
     }

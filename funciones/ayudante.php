@@ -1,7 +1,8 @@
 <?php
 
 // Definir la funcion para el manejo de errores
-function reportarErrores($numero, $mensaje, $archivo, $linea) {
+function reportarErrores($numero, $mensaje, $archivo, $linea)
+{
     $codigos = [
         1 => "Error fatal",
         2 => "Advertencia",
@@ -18,7 +19,8 @@ function reportarErrores($numero, $mensaje, $archivo, $linea) {
 
 set_error_handler('reportarErrores');
 
-function reportarExcepciones($exception) {
+function reportarExcepciones($exception)
+{
     echo "<link rel=\"stylesheet\" href=\"static/css/bootstrap.min.css\">";
 
     echo "<div class=\"alert alert-danger\" role=\"alert\">
@@ -31,8 +33,14 @@ function reportarExcepciones($exception) {
 
 set_exception_handler('reportarExcepciones');
 
-function imprimirArray($array) {
+function imprimirArray($array)
+{
     echo "<pre>";
     print_r($array);
     echo "</pre>";
+}
+
+function redireccionar($ruta)
+{
+    header("Location: {$ruta}", true, 303);
 }

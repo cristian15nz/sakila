@@ -1,4 +1,4 @@
-<nav class="nav flex-column">
+<nav class="nav nav-pills flex-column">
 
     <?php
 
@@ -14,14 +14,21 @@
         "idioma"    => ["Idioma", "fa fa-language"],
         "personal"  => ["Personal", "fa fa-users"],
         "tienda"    => ["Tienda", "fa fa-store"]
-
     ];
 
-    foreach ($paginasMenu as $nombreArchivo => $pagina) {
+    $paginaActual = $_SERVER['REQUEST_URI'];
+
+    foreach ( $paginasMenu as $nombreArchivo => $pagina ) {
         $icono = $pagina[1];
         $textoPagina = $pagina[0];
 
-        echo "<a class=\"nav-link\" href=\"{$nombreArchivo}.php\">
+        $activo = "";
+
+        if ( strpos($paginaActual, $nombreArchivo . ".php") ) {
+            $activo = "active";
+        }
+
+        echo "<a class=\"nav-link $activo\" href=\"{$nombreArchivo}.php\">
                 <i class=\"{$icono} d-inline-block mr-3\" style='width: 20px;'></i>
                 {$textoPagina}
             </a>";
