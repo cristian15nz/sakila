@@ -22,13 +22,15 @@
                         <form action="" method="post">
                             <div class="mb-3">
                                 <label for="nombreActor" class="form-label">Nombre</label>
-                                <input type="text" name="nombreActor" id="nombreActor" class="form-control"
+                                <input type="text" name="nombreActor" id="nombreActor"
+                                       class="form-control"
                                        value="<?= $nombreActor ?>" placeholder="Escribe el nombre">
                             </div>
 
                             <div class="mb-3">
                                 <label for="apellidoActor" class="form-label">Apellido</label>
-                                <input type="text" name="apellidoActor" id="apellidoActor" class="form-control"
+                                <input type="text" name="apellidoActor" id="apellidoActor"
+                                       class="form-control"
                                        value="<?= $apellidoActor ?>" placeholder="Escribe el apellido">
                             </div>
 
@@ -47,33 +49,50 @@
 
                 <hr>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
+                <?php
 
-                            foreach ( $actores as $actor ) {
-                                echo "<tr>
-                                            <th scope=\"row\">{$actor['actor_id']}</th>
-                                            <td>{$actor['first_name']}</td>
-                                            <td>{$actor['last_name']}</td>
-                                        </tr>";
-                            }
+                if ( empty($actores) ) {
+                    include_once "partes/parte_empty.php";
+                } else { ?>
 
-                            ?>
-                            </tbody>
-                        </table>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Listado de actores</h3>
+                            <form action="" method="post">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Apellido</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+
+                                    foreach ( $actores as $actor ) {
+                                        echo "<tr>
+                                                <th scope=\"row\">{$actor['actor_id']}</th>
+                                                <td>{$actor['first_name']}</td>
+                                                <td>{$actor['last_name']}</td>
+                                                <td>
+                                                    <button class='btn btn-outline-danger btn-sm' title='Eliminar actor' name='eliminarActor' value='{$actor['actor_id']}'><i class='fas fa-trash'></i></button>
+                                                    <button class='btn btn-outline-info btn-sm' title='Editar actor'> <i class='fas fa-pen'></i> </button>
+                                                </td>
+                                            </tr>";
+                                    }
+
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+
                     </div>
 
-                </div>
+
+                <?php } ?>
 
             </div>
 
